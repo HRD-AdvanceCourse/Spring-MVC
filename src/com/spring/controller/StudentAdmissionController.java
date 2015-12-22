@@ -23,7 +23,7 @@ public class StudentAdmissionController {
 	@InitBinder
 	public void InitBinder(WebDataBinder binder){
 		//disable studentMobile field
-		binder.setDisallowedFields(new String[] {"studentMobile"});
+		//binder.setDisallowedFields(new String[] {"studentMobile"});
 		
 		//register custom date format
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy****mm****dd");
