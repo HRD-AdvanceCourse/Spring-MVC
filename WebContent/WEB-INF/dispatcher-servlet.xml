@@ -29,5 +29,9 @@
 	<bean id="messageSource"
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basename" value="/WEB-INF/studentmessage"></property>
+
+		<!-- This property will load any changes in /WEB-INF/studentmessage file 
+			at runtime every 1 second, don't use it for production only in development -->
+		<property name="cacheSeconds" value="1"></property>
 	</bean>
 </beans>
