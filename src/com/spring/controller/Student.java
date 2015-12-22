@@ -18,6 +18,8 @@ public class Student {
 	//message custom message to display for user
 	//@Size(min=2, max=30, message = "please enter value of Hobby between {min} to {max} characters")
 	@Size(min=2, max=30) // use messageSource(studentmessage.properties)
+	
+	@IsValidHobby(listOfValidHobbies="Music|Football|Cricket|Hockey") // relate with IsValidHobby and HobbyValidator
 	private String studentHobby;
 
 	@Max(2222) // if more than this value, error will occur, must be less than and equal 
