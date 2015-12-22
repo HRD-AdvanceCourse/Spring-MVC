@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,7 +42,12 @@ public class StudentAdmissionController {
 
 	@RequestMapping(value = "/f", method = RequestMethod.GET)
 	// send to this url by GET method
-	public ModelAndView getAdmissionFrom() {
+	public ModelAndView getAdmissionFrom() throws Exception {
+		String exceptionOccured = "NULL_POINTER";
+		if (exceptionOccured.equalsIgnoreCase("NULL_POINTER")) {
+			throw new NullPointerException("Null Pointer Exception");
+		}
+		
 		ModelAndView modelAndView = new ModelAndView("AdmissionForm");
 		return modelAndView;
 	}
@@ -81,4 +87,11 @@ public class StudentAdmissionController {
 	// modelAndView.addObject("student", student);
 	// return modelAndView;
 	// }
+	
+	
+	@ExceptionHandler(value=NullPointerException.class)
+	public String handleNullPointerException(Exception ex){
+		System.out.println("Null Pointer Exception "+ex);
+		return "NullPointerException";
+	}
 }

@@ -14,6 +14,7 @@
 	<context:component-scan base-package="com.spring.controller" />
 
 	<mvc:annotation-driven />
+	<mvc:resources mapping="resources/**" location="WEB-INF/resources/" />
 
 	<!-- Spring will consider for every request -->
 	<mvc:interceptors>
@@ -22,6 +23,14 @@
 			<mvc:mapping path="/admissionForm" />
 			<bean class="com.spring.controller.DayOfWeekBaseAccessIntercepter"></bean>
 		</mvc:interceptor>
+
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<property name="paramName" value="siteLanguage"></property>
+		</bean>
+
+		<bean class="org.springframework.web.servlet.theme.ThemeChangeInterceptor">
+			<property name="paramName" value="siteTheme"></property>
+		</bean>
 
 	</mvc:interceptors>
 
@@ -44,4 +53,24 @@
 			at runtime every 1 second, don't use it for production only in development -->
 		<property name="cacheSeconds" value="1"></property>
 	</bean>
+
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+		<property name="defaultLocale" value="en"></property>
+		<property name="cookieName" value="localeCookie"></property>
+		<property name="cookieMaxAge" value="3600"></property>
+	</bean>
+
+<!-- ThemeSource will load all theme files in project that start with theme-  -->
+	<bean id="themeSource"
+		class="org.springframework.ui.context.support.ResourceBundleThemeSource">
+		<property name="basenamePrefix" value="com/spring/controller/theme-"></property>
+	</bean>
+	<bean id="themeResolver"
+		class="org.springframework.web.servlet.theme.CookieThemeResolver">
+		<property name="defaultThemeName" value="green"></property>
+		<property name="cookieName" value="themeCookie"></property>
+		<property name="cookieMaxAge" value="3600"></property>
+	</bean>
+	
 </beans>
