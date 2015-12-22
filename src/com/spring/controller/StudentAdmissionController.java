@@ -4,6 +4,8 @@ package com.spring.controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,7 +39,7 @@ public class StudentAdmissionController {
 		model.addAttribute("HeaderAttribute", "This is Header Attribute");
 	}
 
-	@RequestMapping(value = "/admissionForm", method = RequestMethod.GET)
+	@RequestMapping(value = "/f", method = RequestMethod.GET)
 	// send to this url by GET method
 	public ModelAndView getAdmissionFrom() {
 		ModelAndView modelAndView = new ModelAndView("AdmissionForm");
@@ -47,7 +49,7 @@ public class StudentAdmissionController {
 	@RequestMapping(value = "/submitAdmissionForm", method = RequestMethod.POST)
 	// get data from form by this url and send by POST
 	// --------------Less code and do more things----------------
-	public ModelAndView submitAdmissionForm(
+	public ModelAndView submitAdmissionForm(@Valid
 			@ModelAttribute("student") Student student, BindingResult result) {
 		// Spring @ModelAttribute will extra request parameter and bind all
 		// request parameter with corresponding student object

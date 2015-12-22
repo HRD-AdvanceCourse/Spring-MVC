@@ -18,7 +18,7 @@
 		Name: <input type="text" name="studentName" value="Kokpheng" /> <br>
 		Hobby: <input type="text" name="studentHobby" value="Coding" /> <br>
 		Mobile: <input type="text" name="studentMobile" value="85510839775" />
-		<br> DOB: <input type="text" name="studentDOB" value="12/12/1991" />
+		<br> DOB: <input type="text" name="studentDOB" value="12****12****1991" />
 		<br> Skill: <select name="studentSkills" multiple>
 			<option value="java core">Java Core</option>
 			<option value="jsp">JSP</option>
