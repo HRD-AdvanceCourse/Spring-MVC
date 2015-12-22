@@ -10,10 +10,10 @@
         http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
 	<!-- scan all controller class in com.spring.controller package because 
-	front controller @Controller annotation will use this context -->
+		front controller @Controller annotation will use this context -->
 	<context:component-scan base-package="com.spring.controller" />
 
-<mvc:annotation-driven />
+	<mvc:annotation-driven />
 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -26,4 +26,8 @@
 		</property>
 	</bean>
 
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="/WEB-INF/studentmessage"></property>
+	</bean>
 </beans>

@@ -9,7 +9,10 @@ import javax.validation.constraints.Size;
 public class Student {
 	private String studentName;
 	
-	@Size(min=2, max=30)
+	//Size validation length characters
+	//message custom message to display for user
+	//@Size(min=2, max=30, message = "please enter value of Hobby between {min} to {max} characters")
+	@Size(min=2, max=30) // use messageSource(studentmessage.properties)
 	private String studentHobby;
 
 	private long studentMobile;
