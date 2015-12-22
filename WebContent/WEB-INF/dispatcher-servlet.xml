@@ -15,6 +15,16 @@
 
 	<mvc:annotation-driven />
 
+	<!-- Spring will consider for every request -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- mapping is will spring to consider only this url request -->
+			<mvc:mapping path="/admissionForm" />
+			<bean class="com.spring.controller.DayOfWeekBaseAccessIntercepter"></bean>
+		</mvc:interceptor>
+
+	</mvc:interceptors>
+
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
