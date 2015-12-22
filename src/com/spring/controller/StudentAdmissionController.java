@@ -26,6 +26,9 @@ public class StudentAdmissionController {
 		//register custom date format
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy****mm****dd");
 		binder.registerCustomEditor(Date.class,"studentDOB", new CustomDateEditor(dateFormat, false));
+	
+		//customPropertyEditor
+		binder.registerCustomEditor(String.class,"studentName", new StudentNameEditor());
 	}
 	
 	// This method will be call first before other method
